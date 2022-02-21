@@ -1,82 +1,34 @@
-// import { galleryItems } from './gallery-items';
-
-// import SimpleLightbox from "simplelightbox";
-// import "simplelightbox/dist/simple-lightbox.min.css";
-
-// console.log(galleryItems);
-
-// const pictureGalleryItems = document.querySelector('.gallery');
-// const galleryMarkup = clickImgGallery(galleryItems);
-
-// pictureGalleryItems.insertAdjacentHTML('beforeend', galleryMarkup);
-
-// function clickImgGallery(elements) {
-//     return elements
-//         .map(({ preview, original, description }) => {
-//         return `
-//       <div class="gallery__item" >
-//          <a class="gallery__link" 
-//          href="${original}" >
-//               <img class="gallery__image"
-//                 src="${preview}"
-//                 data-source="${original}"
-//                 alt="${description}"
-//                     />
-//                 </a>
-// </div>
-//             `;
-//     })
-//         .join('');
-// }
-
-// var gallery = new SimpleLightbox('.gallery a', { captionDelay: '250' });
-// gallery.on('show.simplelightbox', function () {
-// });
-
-
-// Add imports above this line
 import { galleryItems } from './gallery-items';
-// Change code below this line
 
 import SimpleLightbox from "simplelightbox";
-import 'simplelightbox/dist/simple-lightbox.min.css';
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 console.log(galleryItems);
 
-const galleryDiv = document.querySelector('.gallery')
+const pictureGalleryItems = document.querySelector('.gallery');
+const galleryMarkup = clickImgGallery(galleryItems);
 
+pictureGalleryItems.insertAdjacentHTML('beforeend', galleryMarkup);
 
-
-// 1. Создание и рендер разметки по массиву данных galleryItems 
-//и предоставленному шаблону элемента галереи.
-
-const galleryMarkup = createPhotoMarkup(galleryItems);
-
-galleryDiv.insertAdjacentHTML('beforeend', galleryMarkup);
-
-function createPhotoMarkup(elements) {
-  return elements
-    .map(({ preview, original, description }) => {
-      return `
-<a class="gallery__item" 
-href="${original}">
-  <img
-  class="gallery__image"
-   data-source="${original}"
-  src="${preview}"
-   alt="${description}"
-   title ="${description}"/>
-</a>
-    `;
+function clickImgGallery(elements) {
+    return elements
+        .map(({ preview, original, description }) => {
+        return ` 
+      <div class="gallery__item" >
+         <a class="gallery__link" 
+         href="${original}" >
+              <img class="gallery__image"
+                src="${preview}"
+                data-source="${original}"
+                alt="${description}"
+                    />
+                </a>
+</div>
+            `;
     })
-    .join('');
+        .join('');
 }
 
-// 2. Инициализация библиотеки 
-// Добавляет отображение подписей к изображениям из атрибута alt.
-// Пусть подпись будет снизу и появляется
-// через 250 миллисекунд после открытия изображения.
-
-let gallery = new SimpleLightbox('.gallery a', ({captionDelay: '250'}));
+let gallery = new SimpleLightbox('.gallery a', ({ captionDelay: '250' }));
 gallery.on('show.simplelightbox', function () {
 });
